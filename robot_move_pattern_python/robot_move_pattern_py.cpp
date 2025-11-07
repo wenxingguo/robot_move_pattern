@@ -1,5 +1,6 @@
 #include "../robot_move_pattern.h"
 #include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
 
 PYBIND11_MODULE(robot_move_pattern, rmp)
 {
