@@ -1,6 +1,22 @@
 #include "robot_move_pattern.h"
 #include <Eigen/Geometry>
 
+
+std::vector<double> moveLInBaseCoor(const std::vector<double>& current_tool_pose, const std::vector<double>& direction, const double d)
+{
+    assert(current_tool_pose.size() == 6);
+    assert(direction.size() == 3);
+    Eigen::Vector3d direction_vector(direction[0], direction[1], direction[2]);
+    direction_vector /= direction_vector.squaredNorm();
+   
+    std::vector<double> result = current_tool_pose;
+    for (int i = 0; i < direction_vector.rows(); ++i) {
+        result[i] += direction_vector[i] * d;
+    }
+    return result;
+}
+
+
 std::vector<double> moveLInToolCoor(const std::vector<double>& current_tool_pose, const std::vector<double>& direction, const double d)
 {
 

@@ -6,9 +6,21 @@
  * 将工具坐标系的点转化到世界坐标系 R * P_t = P_b，R由rx ry rz确定
  */
 
+ /******************************************************************************
+  * Function:         moveLInBaseCoor
+  * Description:      在基坐标系下，将机器人工具末端（TCP）沿着direction方向移动d长度
+  * Where:
+  *                   const std::vector<double>& current_tool_pose - 当前工具的位姿 {x y z rx ry rz} 其中(rx ry rz)为旋转向量 使用弧度（rad）
+  *                   const std::vector<double>& direction - 在工具坐标系下的方向
+  *                   const double d - 移动距离，可以为负 单位为m
+  * Return:           std::vector<double> - 返回移动后的目标位姿;
+  * Error:
+  *****************************************************************************/
+std::vector<double> moveLInBaseCoor(const std::vector<double>& current_tool_pose, const std::vector<double>& direction, const double d);
+
 /******************************************************************************
  * Function:         moveLInToolCoor
- * Description:      将机器人工具末端（TCP）沿着direction方向移动d长度
+ * Description:      在工具坐标系下，将机器人工具末端（TCP）沿着direction方向移动d长度
  * Where:
  *                   const std::vector<double>& current_tool_pose - 当前工具的位姿 {x y z rx ry rz} 其中(rx ry rz)为旋转向量 使用弧度（rad）
  *                   const std::vector<double>& direction - 在工具坐标系下的方向
